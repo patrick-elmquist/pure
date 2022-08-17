@@ -140,28 +140,28 @@ prompt_pure_preprompt_render() {
 	[[ -n $prompt_pure_state[username] ]] && preprompt_parts+=($prompt_pure_state[username])
 
 	# Set the path.
-	preprompt_parts+=('%F{${prompt_pure_colors[path]}}%~%f')
+	preprompt_parts+=('%F{${prompt_pure_colors[path]}}%1~%f')
 
 	# Git branch and dirty status info.
 	typeset -gA prompt_pure_vcs_info
 	if [[ -n $prompt_pure_vcs_info[branch] ]]; then
-		preprompt_parts+=("%F{$git_color}"'${prompt_pure_vcs_info[branch]}'"%F{$git_dirty_color}"'${prompt_pure_git_dirty}%f')
+		# preprompt_parts+=("%F{$git_color}"'${prompt_pure_vcs_info[branch]}'"%F{$git_dirty_color}"'${prompt_pure_git_dirty}%f')
 	fi
 	# Git action (for example, merge).
 	if [[ -n $prompt_pure_vcs_info[action] ]]; then
-		preprompt_parts+=("%F{$prompt_pure_colors[git:action]}"'$prompt_pure_vcs_info[action]%f')
+		# preprompt_parts+=("%F{$prompt_pure_colors[git:action]}"'$prompt_pure_vcs_info[action]%f')
 	fi
 	# Git pull/push arrows.
 	if [[ -n $prompt_pure_git_arrows ]]; then
-		preprompt_parts+=('%F{$prompt_pure_colors[git:arrow]}${prompt_pure_git_arrows}%f')
+		# preprompt_parts+=('%F{$prompt_pure_colors[git:arrow]}${prompt_pure_git_arrows}%f')
 	fi
 	# Git stash symbol (if opted in).
 	if [[ -n $prompt_pure_git_stash ]]; then
-		preprompt_parts+=('%F{$prompt_pure_colors[git:stash]}${PURE_GIT_STASH_SYMBOL:-≡}%f')
+		# preprompt_parts+=('%F{$prompt_pure_colors[git:stash]}${PURE_GIT_STASH_SYMBOL:-≡}%f')
 	fi
 
 	# Execution time.
-	[[ -n $prompt_pure_cmd_exec_time ]] && preprompt_parts+=('%F{$prompt_pure_colors[execution_time]}${prompt_pure_cmd_exec_time}%f')
+	[[ -n $prompt_pure_cmd_exec_time ]] && preprompt_parts+=('%F{$prompt_pure_colors[execution_time]}${prompt_pure_cmd_exec_time}%f ')
 
 	local cleaned_ps1=$PROMPT
 	local -H MATCH MBEGIN MEND
